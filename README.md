@@ -1,6 +1,6 @@
 # 20240713 TECH_WOMAN_KANSAI PWA サンプル
 
-TECH WOMAN KANSAI のイベントで使用するサンプルコードです！
+TECH WOMAN KANSAI のイベントで使用するサンプルコードです！<br>
 主に ToDo 管理機能です。
 
 ## 機能
