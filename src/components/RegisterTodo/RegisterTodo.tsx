@@ -9,7 +9,8 @@ export const RegisterTodo = () => {
     console.log("data", data);
 
     // LocalStorageへのデータ追加
-    localStorage.setItem(LOCAL_STORAGE_NAME, data.todo);
+    const stringifyData: string = JSON.stringify(data);
+    localStorage.setItem(LOCAL_STORAGE_NAME, stringifyData);
 
     // フォーム入力クリア
     reset();
