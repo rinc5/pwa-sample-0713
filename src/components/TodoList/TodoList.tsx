@@ -7,5 +7,18 @@ export const TodoList = () => {
   const parsedTodos = todos != null ? JSON.parse(todos) : [];
   const [todoList, setTodoList] = useState<TodoItem[]>(parsedTodos);
 
-  return <TodoListPresenter todoList={todoList} />;
+  /**
+   * Todo削除
+   */
+  const deleteItem = (id: number): void => {
+    const deletedTodoList: TodoItem[] = todoList.filter(
+      (_, index) => index !== id
+    );
+    const stringify: string = JSON.stringify(deletedTodoList);
+    localStorage.setItem(LOCAL_STORAGE_NAME, stringify);
+
+    setTodoList(deletedTodoList);
+  };
+
+  return <TodoListPresenter todoList={todoList} deleteItem={deleteItem} />;
 };
