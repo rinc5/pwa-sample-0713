@@ -10,11 +10,11 @@ interface RegisterTodoPresenterProps {
   onClick: (data: FieldValues) => void;
 }
 
-export const RegisterTodoPresenter = ({
+export function RegisterTodoPresenter({
   register,
   handleSubmit,
   onClick,
-}: RegisterTodoPresenterProps) => {
+}: RegisterTodoPresenterProps) {
   return (
     <div>
       <h2>Todo登録</h2>
@@ -25,4 +25,4 @@ export const RegisterTodoPresenter = ({
       </form>
     </div>
   );
-};
+}

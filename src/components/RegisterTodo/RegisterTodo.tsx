@@ -1,14 +1,20 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { RegisterTodoPresenter } from "./RegisterTodoPresenter";
 import { LOCAL_STORAGE_NAME } from "../../CONST";
+import { TodoItem } from "../TodoList/TodoListPresenter";
+import { Dispatch, SetStateAction } from "react";
 
-export const RegisterTodo = () => {
+interface RegisterTodoProps {
+  setTodoList: Dispatch<SetStateAction<TodoItem[]>>;
+}
+
+export function RegisterTodo({ setTodoList }: RegisterTodoProps) {
   const { register, handleSubmit, reset } = useForm();
-  const todos = localStorage.getItem(LOCAL_STORAGE_NAME);
-  const parsedTodos = todos != null ? JSON.parse(todos) : [];
 
   const onClickSubmit = (data: FieldValues): void => {
-    let todoData = [...parsedTodos, data];
+    const todos = localStorage.getItem(LOCAL_STORAGE_NAME);
+    const parsedTodos = todos != null ? JSON.parse(todos) : [];
+    let todoData: TodoItem[] = [...parsedTodos, data];
 
     // LocalStorageへのデータ追加
     const stringifyData: string = JSON.stringify(todoData);
@@ -16,6 +22,8 @@ export const RegisterTodo = () => {
 
     // フォーム入力クリア
     reset();
+
+    setTodoList(todoData);
   };
 
   return (
@@ -25,4 +33,4 @@ export const RegisterTodo = () => {
       onClick={onClickSubmit}
     />
   );
-};
+}
