@@ -1,5 +1,5 @@
 export type TodoItem = {
-  todo: string;
+  title: string;
 };
 
 interface TodoListPresenterProps {
@@ -16,7 +16,7 @@ export function TodoListPresenter({
       <ul>
         {todoList.map((todo, index) => (
           <div key={index}>
-            <li>{todo.todo}</li>
+            <li>{todo.title}</li>
             <button onClick={() => deleteItem(index)}>削除</button>
           </div>
         ))}

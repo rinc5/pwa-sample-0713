@@ -1,17 +1,32 @@
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { RegisterTodoPresenter } from "./RegisterTodoPresenter";
 import { LOCAL_STORAGE_NAME } from "../../CONST";
 import { TodoItem } from "../TodoList/TodoListPresenter";
 import { Dispatch, SetStateAction } from "react";
+import {
+  RegisterTodoInputType,
+  RegisterTodoSchema,
+} from "./RegisterTodo.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface RegisterTodoProps {
   setTodoList: Dispatch<SetStateAction<TodoItem[]>>;
 }
 
 export function RegisterTodo({ setTodoList }: RegisterTodoProps) {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isDirty },
+  } = useForm<RegisterTodoInputType>({
+    defaultValues: {
+      title: "",
+    },
+    resolver: zodResolver(RegisterTodoSchema),
+  });
 
-  const onClickSubmit = (data: FieldValues): void => {
+  const onClickSubmit = (data: RegisterTodoInputType): void => {
     const todos = localStorage.getItem(LOCAL_STORAGE_NAME);
     const parsedTodos = todos != null ? JSON.parse(todos) : [];
     let todoData: TodoItem[] = [...parsedTodos, data];
@@ -31,6 +46,8 @@ export function RegisterTodo({ setTodoList }: RegisterTodoProps) {
       register={register}
       handleSubmit={handleSubmit}
       onClick={onClickSubmit}
+      errors={errors}
+      isDirty={isDirty}
     />
   );
 }
