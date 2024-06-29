@@ -1,12 +1,13 @@
 import { LOCAL_STORAGE_NAME } from "../../CONST";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { TodoItem, TodoListPresenter } from "./TodoListPresenter";
 
-export const TodoList = () => {
-  const todos = localStorage.getItem(LOCAL_STORAGE_NAME);
-  const parsedTodos = todos != null ? JSON.parse(todos) : [];
-  const [todoList, setTodoList] = useState<TodoItem[]>(parsedTodos);
+interface TodoListProps {
+  todoList: TodoItem[];
+  setTodoList: Dispatch<SetStateAction<TodoItem[]>>;
+}
 
+export function TodoList({ todoList, setTodoList }: TodoListProps) {
   /**
    * Todo削除
    */
@@ -21,4 +22,4 @@ export const TodoList = () => {
   };
 
   return <TodoListPresenter todoList={todoList} deleteItem={deleteItem} />;
-};
+}

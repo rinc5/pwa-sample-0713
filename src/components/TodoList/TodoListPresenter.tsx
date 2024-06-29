@@ -7,10 +7,10 @@ interface TodoListPresenterProps {
   deleteItem: (id: number) => void;
 }
 
-export const TodoListPresenter = ({
+export function TodoListPresenter({
   todoList,
   deleteItem,
-}: TodoListPresenterProps) => {
+}: TodoListPresenterProps) {
   return (
     <div>
       <ul>
@@ -23,4 +23,4 @@ export const TodoListPresenter = ({
       </ul>
     </div>
   );
-};
+}
