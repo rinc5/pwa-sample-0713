@@ -18,7 +18,7 @@ export function RegisterTodo({ setTodoList }: RegisterTodoProps) {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isDirty },
+    formState: { isDirty },
   } = useForm<RegisterTodoInputType>({
     defaultValues: {
       title: "",
@@ -46,7 +46,6 @@ export function RegisterTodo({ setTodoList }: RegisterTodoProps) {
       register={register}
       handleSubmit={handleSubmit}
       onClick={onClickSubmit}
-      errors={errors}
       isDirty={isDirty}
     />
   );
