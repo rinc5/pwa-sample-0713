@@ -1,10 +1,12 @@
 import { Modal } from "../../molecules/Modal/Modal";
+import { TodoItem } from "../TodoList/TodoListPresenter";
 
 interface DeleteTodoModalPresenterProps {
   isOpen: boolean;
   index: number;
   onClick: (id: number) => void;
   onClickClose: () => void;
+  targetTodo: () => TodoItem | undefined;
 }
 
 export const DeleteTodoModalPresenter = ({
@@ -12,13 +14,20 @@ export const DeleteTodoModalPresenter = ({
   index,
   onClick,
   onClickClose,
+  targetTodo,
 }: DeleteTodoModalPresenterProps) => {
   return (
-    <Modal isOpen={isOpen}>
+    <Modal
+      isOpen={isOpen}
+      title="Todoを削除しますか？"
+      content="削除後、復元はできません"
+    >
       <>
-        <h1 className="font-bold text-xl text-center w-full">
-          Todoを削除しますか？
-        </h1>
+        <div className="mx-auto">
+          <p>削除対象：</p>
+          <p>{targetTodo()?.title}</p>
+        </div>
+
         <div className="flex justify-center gap-2">
           <button
             onClick={onClickClose}

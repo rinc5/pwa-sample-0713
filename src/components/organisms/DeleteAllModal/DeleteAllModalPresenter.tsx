@@ -12,11 +12,12 @@ export const DeleteAllModalPresenter = ({
   onClickClose,
 }: DeleteAllModalPresenterProps) => {
   return (
-    <Modal isOpen={isOpen}>
+    <Modal
+      isOpen={isOpen}
+      title="全て削除しますか？"
+      content="削除後、復元はできません"
+    >
       <>
-        <h1 className="font-bold text-xl text-center w-full">
-          全て削除しますか？
-        </h1>
         <div className="flex justify-center gap-2">
           <button
             onClick={onClickClose}
