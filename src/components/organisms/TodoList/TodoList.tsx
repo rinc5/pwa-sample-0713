@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_NAME } from "../../CONST";
+import { LOCAL_STORAGE_NAME } from "../../../CONST";
 import { Dispatch, SetStateAction, useState } from "react";
 import { TodoItem, TodoListPresenter } from "./TodoListPresenter";
 

@@ -1,21 +1,23 @@
-import { Modal } from "../molecules/Modal/Modal";
+import { Modal } from "../../molecules/Modal/Modal";
 
-interface DeleteAllModalPresenterProps {
+interface DeleteTodoModalPresenterProps {
   isOpen: boolean;
-  onClick: () => void;
+  index: number;
+  onClick: (id: number) => void;
   onClickClose: () => void;
 }
 
-export const DeleteAllModalPresenter = ({
+export const DeleteTodoModalPresenter = ({
   isOpen,
+  index,
   onClick,
   onClickClose,
-}: DeleteAllModalPresenterProps) => {
+}: DeleteTodoModalPresenterProps) => {
   return (
     <Modal isOpen={isOpen}>
       <>
         <h1 className="font-bold text-xl text-center w-full">
-          全て削除しますか？
+          Todoを削除しますか？
         </h1>
         <div className="flex justify-center gap-2">
           <button
@@ -26,7 +28,7 @@ export const DeleteAllModalPresenter = ({
           </button>
           <button
             className="border border-red-500 bg-red-500 rounded-md text-white px-4 py-1"
-            onClick={onClick}
+            onClick={() => onClick(index)}
           >
             削除する
           </button>

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { RegisterTodo } from "./components/RegisterTodo/RegisterTodo";
-import { TodoList } from "./components/TodoList/TodoList";
-import { TodoItem } from "./components/TodoList/TodoListPresenter";
+import { RegisterTodo } from "./components/organisms/RegisterTodo/RegisterTodo";
+import { TodoList } from "./components/organisms/TodoList/TodoList";
+import { TodoItem } from "./components/organisms/TodoList/TodoListPresenter";
 import { LOCAL_STORAGE_NAME } from "./CONST";
 
 function App() {

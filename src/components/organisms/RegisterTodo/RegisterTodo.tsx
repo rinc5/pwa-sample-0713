@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { RegisterTodoPresenter } from "./RegisterTodoPresenter";
-import { LOCAL_STORAGE_NAME } from "../../CONST";
+import { LOCAL_STORAGE_NAME } from "../../../CONST";
 import { TodoItem } from "../TodoList/TodoListPresenter";
 import { Dispatch, SetStateAction } from "react";
 import {
