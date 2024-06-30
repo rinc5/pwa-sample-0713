@@ -1,6 +1,7 @@
 import { FaTrashCan } from "react-icons/fa6";
 import { IoIosWarning } from "react-icons/io";
 import { DeleteTodoModal } from "../DeleteTodoModal/DeleteTodoModal";
+import { DeleteAllModal } from "../DeleteAllModal/DeleteAllModal";
 
 export type TodoItem = {
   title: string;
@@ -14,6 +15,8 @@ interface TodoListPresenterProps {
   todoIndex: number;
   closeModal: () => void;
   deleteAll: () => void;
+  isAllModalOpen: boolean;
+  handleAllModal: () => void;
 }
 
 export function TodoListPresenter({
@@ -24,6 +27,8 @@ export function TodoListPresenter({
   todoIndex,
   closeModal,
   deleteAll,
+  isAllModalOpen,
+  handleAllModal,
 }: TodoListPresenterProps) {
   return (
     <div className="w-full md:w-1/2 mx-auto">
@@ -31,7 +36,7 @@ export function TodoListPresenter({
         <h2 className="font-bold text-xl">Todo一覧</h2>
         {todoList.length >= 1 && (
           <button
-            onClick={deleteAll}
+            onClick={handleAllModal}
             className="border border-red-500 rounded-md bg-red-500 text-white px-4 py-1"
           >
             一括削除
@@ -67,6 +72,12 @@ export function TodoListPresenter({
         index={todoIndex}
         onClick={deleteItem}
         onClickClose={closeModal}
+      />
+
+      <DeleteAllModal
+        isOpen={isAllModalOpen}
+        onClickClose={handleAllModal}
+        onClick={deleteAll}
       />
     </div>
   );

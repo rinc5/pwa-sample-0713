@@ -9,6 +9,7 @@ interface TodoListProps {
 
 export function TodoList({ todoList, setTodoList }: TodoListProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isAllModalOpen, setIsAllModalOpen] = useState<boolean>(false);
   const [todoIndex, setTodoIndex] = useState<number>(NaN);
   /**
    * Todo削除
@@ -32,6 +33,9 @@ export function TodoList({ todoList, setTodoList }: TodoListProps) {
     localStorage.removeItem(LOCAL_STORAGE_NAME);
 
     setTodoList([]);
+
+    // 一括削除モーダル閉じる
+    setIsAllModalOpen(false);
   };
   /**
    * モーダル開く
@@ -48,6 +52,13 @@ export function TodoList({ todoList, setTodoList }: TodoListProps) {
     setIsOpen(false);
   };
 
+  /**
+   * 一括削除モーダルの開閉制御
+   */
+  const handleAllModal = (): void => {
+    setIsAllModalOpen(!isAllModalOpen);
+  };
+
   return (
     <TodoListPresenter
       todoList={todoList}
@@ -57,6 +68,8 @@ export function TodoList({ todoList, setTodoList }: TodoListProps) {
       todoIndex={todoIndex}
       closeModal={closeModal}
       deleteAll={deleteAll}
+      isAllModalOpen={isAllModalOpen}
+      handleAllModal={handleAllModal}
     />
   );
 }
