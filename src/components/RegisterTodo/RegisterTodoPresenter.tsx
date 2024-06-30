@@ -42,7 +42,7 @@ export function RegisterTodoPresenter({
           <button
             type="submit"
             disabled={disabledSubmitButton()}
-            className="border border-green-600 bg-green-600 text-white rounded-md w-full md:w-1/3"
+            className="border border-green-600 bg-green-600 text-white rounded-md w-full md:w-1/3 disabled:bg-slate-500 disabled:border-slate-500 disabled:text-opacity-30"
           >
             登録
           </button>
