@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_NAME } from "../../CONST";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { TodoItem, TodoListPresenter } from "./TodoListPresenter";
 
 interface TodoListProps {
@@ -8,6 +8,8 @@ interface TodoListProps {
 }
 
 export function TodoList({ todoList, setTodoList }: TodoListProps) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [todoIndex, setTodoIndex] = useState<number>(NaN);
   /**
    * Todo削除
    */
@@ -19,7 +21,33 @@ export function TodoList({ todoList, setTodoList }: TodoListProps) {
     localStorage.setItem(LOCAL_STORAGE_NAME, stringify);
 
     setTodoList(deletedTodoList);
+
+    setIsOpen(false);
   };
 
-  return <TodoListPresenter todoList={todoList} deleteItem={deleteItem} />;
+  /**
+   * モーダル開く
+   */
+  const openModal = (index: number): void => {
+    setIsOpen(true);
+    setTodoIndex(index);
+  };
+
+  /**
+   * モーダル閉じる
+   */
+  const closeModal = (): void => {
+    setIsOpen(false);
+  };
+
+  return (
+    <TodoListPresenter
+      todoList={todoList}
+      deleteItem={deleteItem}
+      isOpen={isOpen}
+      openModal={openModal}
+      todoIndex={todoIndex}
+      closeModal={closeModal}
+    />
+  );
 }
