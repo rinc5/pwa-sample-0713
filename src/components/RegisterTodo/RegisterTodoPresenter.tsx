@@ -23,17 +23,17 @@ export function RegisterTodoPresenter({
   };
 
   return (
-    <div className="w-1/2 mx-auto">
+    <div className="w-full md:w-1/2 mx-auto">
       <form
         onSubmit={handleSubmit(onClick)}
         className="flex flex-col items-center gap-4"
       >
         <div className="flex gap-x-2">
-          <label htmlFor="title">タスク:</label>
+          <label htmlFor="title">タスク</label>
           <input
             id="title"
             {...register("title")}
-            className="border border-black"
+            className="border border-black rounded-md"
             placeholder="タスクを入力"
           />
         </div>
@@ -42,7 +42,7 @@ export function RegisterTodoPresenter({
           <button
             type="submit"
             disabled={disabledSubmitButton()}
-            className="border border-black rounded-md w-full md:w-1/3"
+            className="border border-green-600 bg-green-600 text-white rounded-md w-full md:w-1/3"
           >
             登録
           </button>

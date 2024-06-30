@@ -10,10 +10,13 @@ function App() {
   const [todoList, setTodoList] = useState<TodoItem[]>(parsedTodos);
 
   return (
-    <div>
+    <div className="px-4">
       <h1 className="text-center my-6 font-bold text-3xl">PWA TODO</h1>
       {/** Todo登録フォーム */}
       <RegisterTodo setTodoList={setTodoList} />
+
+      <hr className="my-4" />
+
       {/** Todo一覧 */}
       <TodoList todoList={todoList} setTodoList={setTodoList} />
     </div>
