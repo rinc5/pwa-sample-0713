@@ -29,12 +29,12 @@ export function RegisterTodoPresenter({
         className="flex flex-col items-center gap-4"
       >
         <div className="flex gap-x-2">
-          <label htmlFor="title">タスク</label>
+          <label htmlFor="title">Todo</label>
           <input
             id="title"
             {...register("title")}
             className="border border-black rounded-md"
-            placeholder="タスクを入力"
+            placeholder="Todoを入力"
           />
         </div>
 
