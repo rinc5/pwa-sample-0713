@@ -26,6 +26,14 @@ export function TodoList({ todoList, setTodoList }: TodoListProps) {
   };
 
   /**
+   * Todo一括削除
+   */
+  const deleteAll = (): void => {
+    localStorage.removeItem(LOCAL_STORAGE_NAME);
+
+    setTodoList([]);
+  };
+  /**
    * モーダル開く
    */
   const openModal = (index: number): void => {
@@ -48,6 +56,7 @@ export function TodoList({ todoList, setTodoList }: TodoListProps) {
       openModal={openModal}
       todoIndex={todoIndex}
       closeModal={closeModal}
+      deleteAll={deleteAll}
     />
   );
 }

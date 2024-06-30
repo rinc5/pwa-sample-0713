@@ -13,6 +13,7 @@ interface TodoListPresenterProps {
   openModal: (index: number) => void;
   todoIndex: number;
   closeModal: () => void;
+  deleteAll: () => void;
 }
 
 export function TodoListPresenter({
@@ -22,10 +23,21 @@ export function TodoListPresenter({
   openModal,
   todoIndex,
   closeModal,
+  deleteAll,
 }: TodoListPresenterProps) {
   return (
     <div className="w-full md:w-1/2 mx-auto">
-      <h2 className="font-bold text-xl">Todo一覧</h2>
+      <div className="flex justify-between">
+        <h2 className="font-bold text-xl">Todo一覧</h2>
+        {todoList.length >= 1 && (
+          <button
+            onClick={deleteAll}
+            className="border border-red-500 rounded-md bg-red-500 text-white px-4 py-1"
+          >
+            一括削除
+          </button>
+        )}
+      </div>
       {todoList.length >= 1 ? (
         <ul className="list-disc list-inside mt-4">
           {todoList.map((todo, index) => (
