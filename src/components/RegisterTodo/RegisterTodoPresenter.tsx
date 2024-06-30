@@ -23,14 +23,30 @@ export function RegisterTodoPresenter({
   };
 
   return (
-    <div>
-      <h2>Todo登録</h2>
-      <form onSubmit={handleSubmit(onClick)}>
-        <label htmlFor="title">TODO:</label>
-        <input id="title" {...register("title")} />
-        <button type="submit" disabled={disabledSubmitButton()}>
-          登録
-        </button>
+    <div className="w-1/2 mx-auto">
+      <form
+        onSubmit={handleSubmit(onClick)}
+        className="flex flex-col items-center gap-4"
+      >
+        <div className="flex gap-x-2">
+          <label htmlFor="title">タスク:</label>
+          <input
+            id="title"
+            {...register("title")}
+            className="border border-black"
+            placeholder="タスクを入力"
+          />
+        </div>
+
+        <div className="w-full text-center">
+          <button
+            type="submit"
+            disabled={disabledSubmitButton()}
+            className="border border-black rounded-md w-full md:w-1/3"
+          >
+            登録
+          </button>
+        </div>
       </form>
     </div>
   );
