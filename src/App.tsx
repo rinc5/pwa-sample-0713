@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import { RegisterTodo } from "./components/RegisterTodo/RegisterTodo";
 import { TodoList } from "./components/TodoList/TodoList";
 import { TodoItem } from "./components/TodoList/TodoListPresenter";
@@ -11,7 +10,7 @@ function App() {
   const [todoList, setTodoList] = useState<TodoItem[]>(parsedTodos);
 
   return (
-    <div className="App">
+    <div>
       <h1>PWA TODO</h1>
       {/** Todo登録フォーム */}
       <RegisterTodo setTodoList={setTodoList} />
